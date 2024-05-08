@@ -1,0 +1,1115 @@
+              			  Java Unit-2 Program 
+
+List Interface is implemented by
+● ArrayList
+● LinkedList
+● Vector
+● Stack classes.
+
+
+1)  Creation of List Interface object by using 'ArrayList' subclass of it. 
+	and travers the array elements. 
+
+import java.util.*;
+public class A
+{
+	public static void main(String args[])
+	{
+		List l1 = new ArrayList();
+
+		l1.add(0,1); // add 1 at the index [0].
+		l1.add(1,2); // add 2 at the index [1] and so on.
+		l1.add(2,3);
+		l1.add(3,4);
+
+		System.out.println("Array : " + l1);
+	}
+}
+
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop$ javac A.java
+Note: A.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+darshan@darshan-Swift-SF314-43:~/Desktop$ java A
+Array : [1, 2, 3, 4]
+darshan@darshan-Swift-SF314-43:~/Desktop$ 
+
+_____________________________________________________________________________________
+
+
+2)  This program shows the creation of List interface object using
+	ArrayList class.
+	It demostrates indexOf(), lastIndexOf() methods of the list
+	interface.
+
+
+import java.util.*;
+class B
+{
+	public static void main(String args[])
+	{
+		// Type safe Array list,stores only Strings
+		List<String> l1 = new ArrayList<String>(5);
+
+		l1.add("GLS");
+		l1.add("University");
+		l1.add("FCAIT");
+		l1.add("GLS");
+
+		System.out.println("----Traverse array elements----");
+		System.out.println("Array : " + l1);
+		System.out.println("-------------------------------");
+
+		//Using IndexOf() and LastIndexOf()
+		System.out.println("First index of GLS : " + l1.indexOf("GLS"));
+		System.out.println("Last index of GLS : " + l1.lastIndexOf("GLS"));
+		System.out.println("Index of Element which not present in list : " + l1.indexOf("Hello"));
+	}
+}
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac B.java
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java B
+----Traverse array elements----
+Array : [GLS, University, FCAIT, GLS]
+-------------------------------
+First index of GLS : 0
+Last index of GLS : 3
+Index of Element which not present in list : -1
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+
+_____________________________________________________________________________________
+
+
+4) ArrayList Demo
+
+import java.util.*;  
+class Student
+{  
+	int roll;  
+	String name;  
+	int age;  
+
+	Student(int roll,String name,int age)
+	{  
+		this.roll = roll;  
+		this.name = name;  
+		this.age = age;  
+	}  
+}  
+
+public class C
+{  
+	public static void main(String args[])
+	{  
+		//Creating user-defined class objects  
+		Student s1 = new Student(101,"Sonoo",23);  
+		Student s2 = new Student(102,"Ravi",21);  
+		Student s3 = new Student(103,"Hanumat",25);  
+
+		//creating Arraylist  
+		ArrayList<Student> al = new ArrayList<Student>();  
+			
+			al.add(s1); //adding Student class object  
+  			al.add(s2);  
+  			al.add(s3);  
+  
+  		// Travers Array-List
+		for(Student st : al)		
+		{  
+    		System.out.println(st.roll + "\t" + st.name + "\t" + st.age);  
+  		}  
+ 	}  
+}  
+
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac C.java
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java C
+101	Sonoo	23
+102	Ravi	21
+103	Hanumat	25
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+
+_____________________________________________________________________________________
+
+
+5) Linked List Demo
+
+
+import java.util.*;
+class Book
+{
+	int id;
+	String name,author,publish;
+	float quan;
+
+	public Book(int i,String n,String a,String pub,float quantity)
+	{
+		id = i;
+		name = n;
+		author = a;
+		publish = pub;
+		quan = quantity;
+	}
+}
+
+public class D
+{
+	public static void main(String args[])
+	{
+		// create Linked list of Book class
+		List<Book> obj = new LinkedList<Book>();
+
+		// create Book class objects
+		Book b1 = new Book(1,"XML","Yashwant singh","BPB",7.9f);
+		Book b2 = new Book(2,"DCN","Forozen","William",9.0f);
+		Book b3 = new Book(3,"FOS","Wailey","John",11.21f);
+
+		// adding Book object data into Linked-list
+		obj.add(b1);
+		obj.add(b2);
+		obj.add(b3);
+
+		//Traverse Linked-list
+		for(Book b : obj)
+		{
+			System.out.println(b.id+"->"+b.name+"->"+b.author+"->"+b.publish+"->"+b.quan);
+		}
+	}
+}
+
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac D.java
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java D
+1->XML->Yashwant singh->BPB->7.9
+2->DCN->Forozen->William->9.0
+3->FOS->Wailey->John->11.21
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+__________________________________________________________________________________
+
+
+7)  Vector can grow or shrink its size.
+
+-> It is a part of Java Collection framework.
+Note : It is found in the java.util package and implements the List
+interface, so we can use all the methods of List interface
+here.
+
+
+import java.util.Vector;
+class G
+{
+	public static void main(String args[])
+	{
+		Vector<Integer> v1 = new Vector<Integer>();
+
+		// vector allows multiple null values and duplicate values.
+		v1.add(5);
+		v1.add(2);
+		v1.add(null);
+		v1.add(4);
+		v1.add(5);
+		v1.add(null);
+
+		// vector travers data sequentially.
+		System.out.println("Vector v1 : " + v1);
+
+		System.out.println("Capacity : " + v1.capacity()); // 10 is default capacity of v1.
+
+		System.out.println("get element from 3rd position : " + v1.get(3));
+		System.out.println("remove element from 2nd position : " + v1.remove(2));
+		System.out.println("Vector v1 : " + v1);
+
+		v1.add(14);
+		v1.addElement(3);
+
+		System.out.println("After add elements in Vector v1 : " + v1);
+
+		v1.removeElementAt(3);
+		System.out.println("After remove elements from Vector v1 : " + v1);
+
+		System.out.println("first element of v1 : " + v1.firstElement());
+		System.out.println("last element of v1 : " + v1.lastElement());
+	}
+}
+
+
+output :
+
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac G.java
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java G
+Vector v1 : [5, 2, null, 4, 5, null]
+Capacity : 10
+get element from 3rd position : 4
+remove element from 2nd position : null
+Vector v1 : [5, 2, 4, 5, null]
+After add elements in Vector v1 : [5, 2, 4, 5, null, 14, 3]
+After remove elements from Vector v1 : [5, 2, 4, null, 14, 3]
+first element of v1 : 5
+last element of v1 : 3
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+_____________________________________________________________________________________
+
+8) The Vector elements can be traversed using the 'Enumeration' interface.
+
+
+import java.util.Enumeration;
+import java.util.Vector;
+public class G1
+{
+	public static void main(String[] args)
+	{
+		Vector<Integer>  vec  =  new  Vector<Integer>();
+		vec.add(7);
+		vec.add(3);
+		vec.add(5);
+		vec.add(9);
+		vec.add(2);
+		vec.add(4);
+		vec.add(null);
+		vec.add(null);
+		vec.add(2);
+
+		System.out.println("Vector : " + vec);
+		
+		System.out.println("Remove element from 7th position : " + vec.remove(7));
+
+		// Enumeration interface generates a series of elements sequentially.
+		Enumeration e = vec.elements();
+		System.out.println("\nVector elements : ");
+		// hasMoreElements() is used to return more elements to be enumerated.
+		while(e.hasMoreElements()) 
+		{
+			System.out.println(e.nextElement()); // Generate one element at a time.
+		}
+	}
+}
+
+
+output :
+
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac G1.java
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java G1
+Vector : [7, 3, 5, 9, 2, 4, null, null, 2]
+Remove element from 7th position : null
+
+Vector elements : 
+7
+3
+5
+9
+2
+4
+null
+2
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+_____________________________________________________________________________________
+
+9)  Stack : This program shows the creation of STACK.
+	It demostrates the various methods of it. 
+
+
+import java.util.*;
+class E
+{
+	public static void main(String args[])
+	{
+
+		Stack<Integer> s1 = new Stack<Integer>();
+		s1.push(new Integer(1));
+		s1.push(new Integer(2));
+		s1.push(new Integer(3));
+		s1.push(new Integer(4));
+		
+			System.out.println("Entered data");
+			for(int a : s1)
+			{
+				System.out.println(a);
+			}
+			
+			System.out.print("\nStack :: ");
+				System.out.println(s1);
+			System.out.println("------------------");
+
+			System.out.println("Search the index of 3 : " + s1.search(3));	
+
+			System.out.println("------------------");
+				System.out.println("Popped : " + s1.pop());
+				System.out.println("Popped : " + s1.pop());
+			System.out.print("\nStack :: ");
+				System.out.println(s1);
+			System.out.println("------------------");
+
+				System.out.println("Peek : " + s1.peek());
+				System.out.println("Popped : " + s1.pop());
+			System.out.print("\nStack :: ");
+				System.out.println(s1);
+				System.out.println("Peek : " + s1.peek());
+			System.out.println("------------------");
+
+	}
+}
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac E.java
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java E
+1
+2
+3
+4
+
+Stack :: [1, 2, 3, 4]
+------------------
+Search the index of 3 : 2
+------------------
+Popped : 4
+Popped : 3
+
+Stack :: [1, 2]
+------------------
+Peek : 2
+Popped : 2
+
+Stack :: [1]
+Peek : 1
+------------------
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+_____________________________________________________________________________________
+
+
+10) This program create a LinkedList as Stack and use the 
+     various methods of it.
+
+
+import java.util.LinkedList;
+
+public class E1
+{
+	public static void main(String args[])
+	{
+		LinkedList<Integer> s1 = new <Integer>LinkedList();
+			
+			s1.push(new Integer(11));
+			s1.push(new Integer(12));
+			s1.push(new Integer(13));
+			s1.push(new Integer(14));
+			s1.push(new Integer(15));
+			s1.push(new Integer(16));
+		
+			System.out.println("Entered data");
+			for(int a : s1)
+			{
+				System.out.println(a);
+			}
+			
+			System.out.print("\nStack :: ");
+				System.out.println(s1);
+			System.out.println("------------------");
+
+			System.out.println("Search the data at index[2] : " + s1.get(2));	
+
+			System.out.println("------------------");
+				System.out.println("Popped : " + s1.pop());
+				System.out.println("Popped : " + s1.pop());
+			System.out.print("\nStack :: ");
+				System.out.println(s1);
+				System.out.println("Peek : " + s1.peek());
+
+			System.out.println("------------------");
+				System.out.println("Popped : " + s1.pop());
+			System.out.print("\nStack :: ");
+				System.out.println(s1);
+				System.out.println("Peek : " + s1.peek());
+			System.out.println("------------------");
+	}
+}
+
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac E1.java
+Note: E1.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java E1
+Entered data
+16
+15
+14
+13
+12
+11
+
+Stack :: [16, 15, 14, 13, 12, 11]
+------------------
+Search the data at index[2] : 14
+------------------
+Popped : 16
+Popped : 15
+
+Stack :: [14, 13, 12, 11]
+Peek : 14
+------------------
+Popped : 14
+
+Stack :: [13, 12, 11]
+Peek : 13
+------------------
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+
+__________________________________________________________________________
+
+--------------------------( Queue Interface )-----------------------------
+__________________________________________________________________________
+
+
+1)  Queue : this program demonstrate varius methods of queue.
+
+
+import java.util.*;
+class F
+{
+	public static void main(String[] args)
+	{
+		Queue<Long> l1 = new LinkedList<Long>();
+
+		// return null if 'Q' is empty else return Head element if 'Q' have elements.
+		System.out.println("First element : " + l1.peek());
+
+
+		l1.add(new Long(1));
+		l1.add(new Long(2));
+		l1.add(new Long(3));
+		l1.add(new Long(4));
+
+		for(Long obj : l1)
+		{
+			System.out.println(obj);
+		}
+		System.out.println("--------------------");
+
+		// To display the head of the queue
+		System.out.println("First element : " + l1.element());
+		System.out.println("--------------------");
+
+		// to remove element from the first position
+		System.out.println("Remove first element : " + l1.poll());
+		System.out.println("--------------------");
+
+		System.out.println("Queue :: " + l1); // element print in the form of Q.
+	}
+}
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac F.java
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java F
+First element : null
+1
+2
+3
+4
+--------------------
+First element : 1
+--------------------
+Remove first element : 1
+--------------------
+Queue :: [2, 3, 4]
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+_____________________________________________________________________________________
+
+__________________________________________________________________________
+
+---------------------------( SET Interface )------------------------------
+__________________________________________________________________________
+
+
+1) HashSet : it removes duplication automatically & accept null values.
+	it retrieve the elements in a sorted order. 
+
+Note : It does not guarantee that the order will remain constant
+       over time.
+
+
+import java.util.*;
+public class H
+{
+	public static void main(String args[])
+	{
+		HashSet<String>  h1 = new  HashSet<String>();
+
+			h1.add("A");
+			h1.add("C");
+			h1.add("B");
+			h1.add("E");
+			h1.add(null);
+			h1.add("D");
+			h1.add("D");
+			h1.add("F");
+			h1.add(null);
+
+		System.out.println("HashSet h1 : " + h1);
+
+		// iterating HashSet by For-Each loop.
+		for(String s : h1)
+		{
+			System.out.println(s);
+		}
+
+
+		System.out.println("----------------");
+			System.out.println("Size : " + h1.size());
+		System.out.println("----------------");
+			System.out.println("remove : " + h1.remove(null));
+		System.out.println("----------------");
+			System.out.println("HashSet h1 : " + h1);
+		System.out.println("----------------");
+			System.out.println("contains : " + h1.contains("D"));
+		System.out.println("----------------");
+
+		//  HashSet - 2
+
+		HashSet<String> h2 = new HashSet<String>();
+			h2.add("C");
+			h2.add("A");
+			h2.add("B");
+		System.out.println("HashSet h2 : " + h2);
+
+		System.out.println("----------------");
+			System.out.println("h2 is subset of h1 : " + h1.containsAll(h2));
+
+	}
+}
+
+
+output :
+
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac H.java
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java H
+HashSet h1 : [null, A, B, C, D, E, F]
+null
+A
+B
+C
+D
+E
+F
+----------------
+Size : 7
+----------------
+remove : true
+----------------
+HashSet h1 : [A, B, C, D, E, F]
+----------------
+contains : true
+----------------
+HashSet h2 : [A, B, C]
+----------------
+h2 is subset of h1 : true
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$
+
+_____________________________________________________________________________________
+
+
+2) TreeSet : TreeSet offers a strict control over the order of elements
+	in the collection.
+Note : TreeSet does not permit null in the collection.
+
+
+import java.util.*;
+
+public class I
+{
+	public static void main(String args[])
+	{
+		TreeSet<String> T1 = new TreeSet<String>();
+			
+			T1.add("D");
+			T1.add("C");
+			T1.add("D");
+			T1.add("B");
+			T1.add("C");
+			T1.add("A");
+
+		System.out.println("TreeSet T1 : " + T1);
+
+		System.out.println("\nIterating TreeSet usin for-each loop");
+		for(String s : T1)
+		{
+			System.out.println(s);
+		}
+
+			System.out.println("-------------");
+				System.out.println("First data : " +T1.first());
+			System.out.println("-------------");
+				System.out.println("Last data : " + T1.last());
+			System.out.println("-------------");
+				System.out.println("Size of TreeSet : " + T1.size());
+			System.out.println("-------------");
+	}
+}
+
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac I.java
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java I
+TreeSet T1 : [A, B, C, D]
+
+Iterating TreeSet usin for-each loop
+A
+B
+C
+D
+-------------
+First data : A
+-------------
+Last data : D
+-------------
+Size of TreeSet : 4
+-------------
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+_____________________________________________________________________________________
+
+
+3) LinkedHashSet class maintains insertion order.
+
+Note : LinkeHasSet used for storing the duplicate-free collection. 
+
+import java.util.*;
+public class J
+{
+	public static void main(String[] args)
+	{
+		LinkedHashSet<String> l1 = new <String>LinkedHashSet();
+
+			l1.add("D");
+			l1.add("C");
+			l1.add("B");
+			l1.add(null);
+			l1.add("D");
+			l1.add("A");
+			l1.add("B");
+			l1.add(null);
+			l1.add("F");
+			l1.add("E");
+
+		System.out.println("LinkedHashSet l1 : " + l1);
+
+		System.out.println("\nIterating l1 using for-each loop");
+		for(String s : l1)
+		{
+			System.out.print(" -> " + s);
+		}
+		System.out.println();
+
+		System.out.println("----------");
+			System.out.println("Size : " + l1.size());
+		System.out.println("----------");
+			System.out.println("Remove 'null' element : " + l1.remove(null));
+		System.out.println("----------");
+			System.out.println("LinkedHashSet l1 : " + l1);
+		System.out.println("----------");
+			System.out.println("l1 contains 'E' element : " + l1.contains("E"));
+	}
+}
+
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac J.java
+Note: J.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java J
+LinkedHashSet l1 : [D, C, B, null, A, F, E]
+
+Iterating l1 using for-each loop
+ -> D -> C -> B -> null -> A -> F -> E
+----------
+Size : 7
+----------
+Remove 'null' element : true
+----------
+LinkedHashSet l1 : [D, C, B, A, F, E]
+----------
+l1 contains 'E' element : true
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+
+
+__________________________________________________________________________
+
+---------------------------( Map Interface )------------------------------
+__________________________________________________________________________
+
+
+1)  HashMap : program of traversing key & values of HashMap.
+
+import java.util.*;
+
+class K
+{
+	public static void main(String args[])
+	{
+		HashMap<Integer,String>  hm1 = new  <Integer,String>HashMap();
+
+			hm1.put(12,"Saloni");
+			hm1.put(2,"Rahul");
+			hm1.put(7,"Rutul");
+			hm1.put(1,"Deepa");
+			hm1.put(2,"Anuj");
+			hm1.put(null,null);
+			hm1.put(3,null);
+			hm1.put(5,"Mittal");
+			hm1.put(5,"Vaayu");
+
+		System.out.println("HashMap hm1 : " + hm1);
+
+		System.out.println("\nIterate HashMap using for-each");
+		for(Map.Entry m : hm1.entrySet())
+		{
+			System.out.println(m.getKey() + " " + m.getValue());
+		}
+	}
+}
+
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac K.java
+Note: K.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java K
+HashMap hm1 : {null=null, 1=Deepa, 2=Anuj, 3=null, 5=Vaayu, 7=Rutul, 12=Saloni}
+
+Iterate HashMap using for-each
+null null
+1 Deepa
+2 Anuj
+3 null
+5 Vaayu
+7 Rutul
+12 Saloni
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+_____________________________________________________________________________________
+
+
+2) Java program to create the HashMap with the
+   String key & String value and print it. 
+
+
+import java.util.*;
+class K1
+{
+	public static void main(String args[])
+	{
+		HashMap<String,String>  h1 = new  <String,String>HashMap();
+
+			h1.put("key1","Saloni");
+			h1.put("key2","Rahul");
+			h1.put("key3","Rutul");
+			h1.put(null,null);
+			h1.put("key1","Deepa");
+		System.out.println("HashMap h1 : " + h1);
+
+		System.out.println("\nIterate HashMap using for-each");
+		for(Map.Entry m : h1.entrySet())
+		{
+			System.out.println(m.getKey() + " " + m.getValue());
+		}
+	}
+}
+
+
+output :
+
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac K1.java
+Note: K1.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java K1
+HashMap h1 : {key1=Deepa, null=null, key2=Rahul, key3=Rutul}
+
+Iterate HashMap using for-each
+key1 Deepa
+null null
+key2 Rahul
+key3 Rutul
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+
+_____________________________________________________________________________________
+
+3) Java Program to modifiy key's value and remove key's value from HashMap.
+
+
+import java.util.*;
+class K2
+{
+	public static void main(String args[])
+	{
+		HashMap<String,String>  h1 = new  <String,String>HashMap();
+
+			h1.put("Emp1","TOM");
+			h1.put("Emp2","PETER");
+			h1.put("Emp3","WATSON");
+			h1.put(null,null);
+			
+		System.out.println("HashMap h1 : " + h1);
+
+		h1.put("Emp3","DK"); // modify value
+		System.out.println("HashMap h1 : " + h1);
+
+		System.out.println("\nKeys in Map");
+		for(String s : h1.keySet())
+		{
+			System.out.println(s);
+		}
+
+		System.out.println("\nValues in Map");
+		for(String s : h1.values())
+		{
+			System.out.println(s);
+		}
+
+		System.out.println("Value associated to Emp2 : " + h1.get("Emp2"));
+		System.out.println("Size of HashMap : " + h1.size());
+		System.out.println("remove Emp2 : " + h1.remove("Emp2")); // 'true' if Emp2 is deleted..
+
+		System.out.println("HashMap h1 : " + h1);
+	}
+}
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac K2.java
+Note: K2.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java K2
+HashMap h1 : {null=null, Emp1=TOM, Emp3=WATSON, Emp2=PETER}
+HashMap h1 : {null=null, Emp1=TOM, Emp3=DK, Emp2=PETER}
+
+Keys in Map
+null
+Emp1
+Emp3
+Emp2
+
+Values in Map
+null
+TOM
+DK
+PETER
+
+Value associated to Emp2 : PETER
+Size of HashMap : 4
+remove Emp2 : PETER
+HashMap h1 : {null=null, Emp1=TOM, Emp3=DK}
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+_____________________________________________________________________________________
+
+
+4)  TreeMap : Java program to create the TreeMap with the
+   String key & String value and print it. 
+   This class guarantees that the map will be in ascending key order.
+
+Note : TreeMap Not allow null key and null value pairs to be stored.
+
+import java.util.*;
+
+public class L
+{
+	public static void main(String args[])
+	{
+		TreeMap<String,String>  tm = new  <String,String>TreeMap();
+
+			tm.put("Emp1","Jay");
+			tm.put("Emp2","Dhruv");
+			tm.put("Emp3","Veer");
+			//tm.put(null,null); // NullPointerException occur
+			
+		System.out.println("TreeMap tm : " + tm);
+
+		tm.put("Emp3","Vraj"); // modify value
+		System.out.println("TreeMap tm : " + tm);
+
+		System.out.println("\nKeys in Map");
+		for(String s : tm.keySet())
+		{
+			System.out.println(s);
+		}
+
+		System.out.println("\nValues in Map");
+		for(String s : tm.values())
+		{
+			System.out.println(s);
+		}
+
+		System.out.println("Value associated to Emp1 : " + tm.get("Emp1"));
+		System.out.println("Size of TreeMap : " + tm.size());
+		System.out.println("remove Emp2 : " + tm.remove("Emp2")); // 'true' if Emp2 is deleted..
+
+		System.out.println("TreeMap tm : " + tm);
+	}
+}
+
+output :
+
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac L.java
+Note: L.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java L
+TreeMap tm : {Emp1=Jay, Emp2=Dhruv, Emp3=Veer}
+TreeMap tm : {Emp1=Jay, Emp2=Dhruv, Emp3=Vraj}
+
+Keys in Map
+Emp1
+Emp2
+Emp3
+
+Values in Map
+Jay
+Dhruv
+Vraj
+
+Value associated to Emp1 : Jay
+Size of TreeMap : 3
+remove Emp2 : Dhruv
+TreeMap tm : {Emp1=Jay, Emp3=Vraj}
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+_____________________________________________________________________________________
+
+6)  Iterator Interface Demo.
+
+
+import java.util.*;
+public class N
+{
+  	public static void main(String[] args)
+	{
+    	ArrayList<Integer> numbers = new ArrayList<Integer>();
+    		
+    		numbers.add(12);
+    		numbers.add(8);
+    		numbers.add(5);
+    		numbers.add(2);
+    		numbers.add(23);
+
+    		System.out.println("ArrayList : " + numbers);
+    
+		Iterator<Integer> it = numbers.iterator();
+    	Iterator<Integer> it1 = numbers.iterator();
+		
+		// Print the item until the ArrayList becomes empty
+
+		System.out.println("Iterate ArrayList using hasNext() : ");
+		while(it.hasNext())
+		{    		
+			System.out.println(it.next());
+		}
+
+		// Remove the item
+		while(it1.hasNext())
+		{
+  			Integer i = it1.next();
+  			if(i < 10) 
+			{
+    				it1.remove();
+  			}
+    	}
+    	
+    	System.out.println("After remove item : " + numbers);
+  	}
+}
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac N.java
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java N
+ArrayList : [12, 8, 5, 2, 23]
+Iterate ArrayList using hasNext() : 
+12
+8
+5
+2
+23
+After remove item : [12, 23]
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+_____________________________________________________________________________________
+
+
+7) ListIterator allows users to traverse Collection in both direction.
+
+import java.util.*; 
+  
+class O
+{ 
+    public static void main(String[] args) 
+    { 
+        ArrayList<String> list = new ArrayList<String>(); 
+  
+        list.add("A"); 
+        list.add("B"); 
+        list.add("C"); 
+        list.add("D"); 
+        list.add("E"); 
+  
+        // ListIterator to traverse the list 
+        ListIterator iterator = list.listIterator(); 
+  
+        // Traversing the list in forward direction 
+        System.out.println("Displaying list elements in forward direction : "); 
+  
+        while (iterator.hasNext()) 
+        {
+            System.out.print(iterator.next() + " "); 
+        }
+        System.out.println(); 
+  
+        // Traversing the list in backward direction 
+        System.out.println("Displaying list elements in backward direction : "); 
+  
+        while (iterator.hasPrevious()) 
+        {
+            System.out.print(iterator.previous() + " "); 
+        }
+        System.out.println(); 
+    } 
+} 
+
+output :
+
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ javac O.java
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ java O
+Displaying list elements in forward direction : 
+A B C D E 
+Displaying list elements in backward direction : 
+E D C B A 
+darshan@darshan-Swift-SF314-43:~/Desktop/Advance Java/unit2$ 
+
+
+
