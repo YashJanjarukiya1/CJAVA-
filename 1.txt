@@ -1,0 +1,576 @@
+NAME : Janjarukiya Yash Dilipbhai
+NO : AS15
+DIV : AS
+SUBJECT : DBMS-II
+
+First Assignment.
+=>
+
+1 => String Function.
+
+mysql> create table student(
+    -> E_Id int not null,
+    -> Name varchar(10),
+    -> Age int,
+    -> Address varchar(20),
+    -> Join_date date,
+    -> Leave_date date,
+    -> Salary bigint);
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> desc student;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| E_Id       | int         | NO   |     | NULL    |       |
+| Name       | varchar(10) | YES  |     | NULL    |       |
+| Age        | int         | YES  |     | NULL    |       |
+| Address    | varchar(20) | YES  |     | NULL    |       |
+| Join_date  | date        | YES  |     | NULL    |       |
+| Leave_date | date        | YES  |     | NULL    |       |
+| Salary     | bigint      | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+7 rows in set (0.02 sec)
+
+mysql> insert into student values(101,"Akshay",22,"AHMEDABAD","2015-06-22","2022-08-30",22000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(102,"Deep",24,"SURAT","2017-03-12","2021-05-22",25000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(103,"Nisha",26,"Delhi","2015-04-22","2020-07-15",27000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(104,"Bhavik",20,"Ahmedabad","2017-05-10","2022-06-23",21000);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into student values(105,"Shanaya",27,"Chandigarh","2010-06-12","2022-05-30",28000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values(106,"Prisha",29,"Ahmedabad","2010-07-22","2021-06-12",30000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++------+---------+------+------------+------------+------------+--------+
+| E_Id | Name    | Age  | Address    | Join_date  | Leave_date | Salary |
++------+---------+------+------------+------------+------------+--------+
+|  101 | Akshay  |   22 | AHMEDABAD  | 2015-06-22 | 2022-08-30 |  22000 |
+|  102 | Deep    |   24 | SURAT      | 2017-03-12 | 2021-05-22 |  25000 |
+|  103 | Nisha   |   26 | Delhi      | 2015-04-22 | 2020-07-15 |  27000 |
+|  104 | Bhavik  |   20 | Ahmedabad  | 2017-05-10 | 2022-06-23 |  21000 |
+|  105 | Shanaya |   27 | Chandigarh | 2010-06-12 | 2022-05-30 |  28000 |
+|  106 | Prisha  |   29 | Ahmedabad  | 2010-07-22 | 2021-06-12 |  30000 |
++------+---------+------+------------+------------+------------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select length(Name) from student;
++--------------+
+| length(Name) |
++--------------+
+|            6 |
+|            4 |
+|            5 |
+|            6 |
+|            7 |
+|            6 |
++--------------+
+6 rows in set (0.00 sec)
+
+mysql> select length(Address) from student;
++-----------------+
+| length(Address) |
++-----------------+
+|               9 |
+|               5 |
+|               5 |
+|               9 |
+|              10 |
+|               9 |
++-----------------+
+6 rows in set (0.00 sec)
+
+mysql> select length(Name)as Name_len,length(Address) as Addr_len from emp;
++----------+----------+
+| Name_len | Addr_len |
++----------+----------+
+|        6 |        9 |
+|        4 |        5 |
+|        5 |        5 |
+|        6 |        9 |
+|        7 |       10 |
+|        6 |        9 |
++----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select lcase(Name) as Lowercase from student;
++-----------+
+| Lowercase |
++-----------+
+| akshay    |
+| deep      |
+| nisha     |
+| bhavik    |
+| shanaya   |
+| prisha    |
++-----------+
+6 rows in set (0.00 sec)
+
+mysql> select lower(Name) as Lowercase from student;
++-----------+
+| Lowercase |
++-----------+
+| akshay    |
+| deep      |
+| nisha     |
+| bhavik    |
+| shanaya   |
+| prisha    |
++-----------+
+6 rows in set (0.00 sec)
+
+mysql> select upper(Name) as Uppercase from student;
++-----------+
+| Uppercase |
++-----------+
+| AKSHAY    |
+| DEEP      |
+| NISHA     |
+| BHAVIK    |
+| SHANAYA   |
+| PRISHA    |
++-----------+
+6 rows in set (0.00 sec)
+
+mysql> select ucase(Name) as Uppercase from student;
++-----------+
+| Uppercase |
++-----------+
+| AKSHAY    |
+| DEEP      |
+| NISHA     |
+| BHAVIK    |
+| SHANAYA   |
+| PRISHA    |
++-----------+
+6 rows in set (0.00 sec)
+
+mysql> select left(Name,4) from student;
++--------------+
+| left(Name,4) |
++--------------+
+| Aksh         |
+| Deep         |
+| Nish         |
+| Bhav         |
+| Shan         |
+| Pris         |
++--------------+
+6 rows in set (0.00 sec)
+
+mysql> select right(Name,4) from student;
++---------------+
+| right(Name,4) |
++---------------+
+| shay          |
+| Deep          |
+| isha          |
+| avik          |
+| naya          |
+| isha          |
++---------------+
+6 rows in set (0.00 sec)
+
+mysql> select substr(Name,2,4) from student;
++------------------+
+| substr(Name,2,4) |
++------------------+
+| ksha             |
+| eep              |
+| isha             |
+| havi             |
+| hana             |
+| rish             |
++------------------+
+6 rows in set (0.00 sec)
+
+mysql> select concat(Name,'-',Address) from student;
++--------------------------+
+| concat(Name,'-',Address) |
++--------------------------+
+| Akshay-AHMEDABAD         |
+| Deep-SURAT               |
+| Nisha-Delhi              |
+| Bhavik-Ahmedabad         |
+| Shanaya-Chandigarh       |
+| Prisha-Ahmedabad         |
++--------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select replace(Name,'ana','aa') from student;
++--------------------------+
+| replace(Name,'ana','aa') |
++--------------------------+
+| Akshay                   |
+| Deep                     |
+| Nisha                    |
+| Bhavik                   |
+| Shaaya                   |
+| Prisha                   |
++--------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select reverse(Name) from Student;
++---------------+
+| reverse(Name) |
++---------------+
+| yahskA        |
+| peeD          |
+| ahsiN         |
+| kivahB        |
+| ayanahS       |
+| ahsirP        |
++---------------+
+6 rows in set (0.00 sec)
+
+mysql> select reverse(Address) from Student;
++------------------+
+| reverse(Address) |
++------------------+
+| DABADEMHA        |
+| TARUS            |
+| ihleD            |
+| dabademhA        |
+| hragidnahC       |
+| dabademhA        |
++------------------+
+6 rows in set (0.00 sec)
+
+mysql> select reverse(Address)as Rev_Add ,reverse(Name)as rev_Name from emp;
++------------+----------+
+| Rev_Add    | rev_Name |
++------------+----------+
+| DABADEMHA  | yahskA   |
+| TARUS      | peeD     |
+| ihleD      | ahsiN    |
+| dabademhA  | kivahB   |
+| hragidnahC | ayanahS  |
+| dabademhA  | ahsirP   |
++------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select ascii(Name) from student;
++-------------+
+| ascii(Name) |
++-------------+
+|          65 |
+|          68 |
+|          78 |
+|          66 |
+|          83 |
+|          80 |
++-------------+
+6 rows in set (0.00 sec)
+
+mysql> select instr(Name,'a') from student;
++-----------------+
+| instr(Name,'a') |
++-----------------+
+|               1 |
+|               0 |
+|               5 |
+|               3 |
+|               3 |
+|               6 |
++-----------------+
+6 rows in set (0.01 sec)
+
+mysql> select * from student order by Name;
++------+---------+------+------------+------------+------------+--------+
+| E_Id | Name    | Age  | Address    | Join_date  | Leave_date | Salary |
++------+---------+------+------------+------------+------------+--------+
+|  101 | Akshay  |   22 | AHMEDABAD  | 2015-06-22 | 2022-08-30 |  22000 |
+|  104 | Bhavik  |   20 | Ahmedabad  | 2017-05-10 | 2022-06-23 |  21000 |
+|  102 | Deep    |   24 | SURAT      | 2017-03-12 | 2021-05-22 |  25000 |
+|  103 | Nisha   |   26 | Delhi      | 2015-04-22 | 2020-07-15 |  27000 |
+|  106 | Prisha  |   29 | Ahmedabad  | 2010-07-22 | 2021-06-12 |  30000 |
+|  105 | Shanaya |   27 | Chandigarh | 2010-06-12 | 2022-05-30 |  28000 |
++------+---------+------+------------+------------+------------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student order by Address desc;
++------+---------+------+------------+------------+------------+--------+
+| E_Id | Name    | Age  | Address    | Join_date  | Leave_date | Salary |
++------+---------+------+------------+------------+------------+--------+
+|  102 | Deep    |   24 | SURAT      | 2017-03-12 | 2021-05-22 |  25000 |
+|  103 | Nisha   |   26 | Delhi      | 2015-04-22 | 2020-07-15 |  27000 |
+|  105 | Shanaya |   27 | Chandigarh | 2010-06-12 | 2022-05-30 |  28000 |
+|  101 | Akshay  |   22 | AHMEDABAD  | 2015-06-22 | 2022-08-30 |  22000 |
+|  104 | Bhavik  |   20 | Ahmedabad  | 2017-05-10 | 2022-06-23 |  21000 |
+|  106 | Prisha  |   29 | Ahmedabad  | 2010-07-22 | 2021-06-12 |  30000 |
++------+---------+------+------------+------------+------------+--------+
+6 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. => Math Function
+
+mysql> select max(Salary) from student;
++-------------+
+| max(Salary) |
++-------------+
+|       30000 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> select min(Salary) from student;
++-------------+
+| min(Salary) |
++-------------+
+|       21000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(Salary) from student;
++-------------+
+| avg(Salary) |
++-------------+
+|  25500.0000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(Salary) as Total_of_the_salary from student;
++---------------------+
+| Total_of_the_salary |
++---------------------+
+|              153000 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select max(Salary)as max_sal,min(Salary)as min_sal,avg(Salary)as avg_sal,sum(Salary) tot_sal from emp;
++---------+---------+------------+---------+
+| max_sal | min_sal | avg_sal    | tot_sal |
++---------+---------+------------+---------+
+|   30000 |   21000 | 25500.0000 |  153000 |
++---------+---------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select mod(Age,4) from student;
++------------+
+| mod(Age,4) |
++------------+
+|          2 |
+|          0 |
+|          2 |
+|          0 |
+|          3 |
+|          1 |
++------------+
+6 rows in set (0.00 sec)
+
+mysql> select ceil(25.75);
++-------------+
+| ceil(25.75) |
++-------------+
+|          26 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select floor(25.75);
++--------------+
+| floor(25.75) |
++--------------+
+|           25 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select round(135.258,2);
++------------------+
+| round(135.258,2) |
++------------------+
+|           135.26 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select rand() from student;
++---------------------+
+| rand()              |
++---------------------+
+| 0.19745857566358388 |
+|  0.2584160922639222 |
+|  0.6997047650625042 |
+|  0.7232755792543996 |
+|  0.5172636318181303 |
+| 0.41649145206109756 |
++---------------------+
+6 rows in set (0.00 sec)
+
+mysql> select count(E_Id) as Record from student;
++--------+
+| Record |
++--------+
+|      6 |
++--------+
+1 row in set (0.01 sec)
+
+mysql> select pow(Salary,2) from student;
++---------------+
+| pow(Salary,2) |
++---------------+
+|     484000000 |
+|     625000000 |
+|     729000000 |
+|     441000000 |
+|     784000000 |
+|     900000000 |
++---------------+
+6 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. => Date Function
+
+mysql> select datediff(Join_date,Leave_date) from student;
++--------------------------------+
+| datediff(Join_date,Leave_date) |
++--------------------------------+
+|                          -2626 |
+|                          -1532 |
+|                          -1911 |
+|                          -1870 |
+|                          -4370 |
+|                          -3978 |
++--------------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select E_Id,Name,date_format(Join_date,"%a") from student;
++------+---------+-----------------------------+
+| E_Id | Name    | date_format(Join_date,"%a") |
++------+---------+-----------------------------+
+|  101 | Akshay  | Mon                         |
+|  102 | Deep    | Sun                         |
+|  103 | Nisha   | Wed                         |
+|  104 | Bhavik  | Wed                         |
+|  105 | Shanaya | Sat                         |
+|  106 | Prisha  | Thu                         |
++------+---------+-----------------------------+
+6 rows in set (0.02 sec)
+
+mysql> select E_Id,Name,date_format(Join_date,"%M") from student;
++------+---------+-----------------------------+
+| E_Id | Name    | date_format(Join_date,"%M") |
++------+---------+-----------------------------+
+|  101 | Akshay  | June                        |
+|  102 | Deep    | March                       |
+|  103 | Nisha   | April                       |
+|  104 | Bhavik  | May                         |
+|  105 | Shanaya | June                        |
+|  106 | Prisha  | July                        |
++------+---------+-----------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select E_Id,Name,date_format(Join_date,"%b") from student;
++------+---------+-----------------------------+
+| E_Id | Name    | date_format(Join_date,"%b") |
++------+---------+-----------------------------+
+|  101 | Akshay  | Jun                         |
+|  102 | Deep    | Mar                         |
+|  103 | Nisha   | Apr                         |
+|  104 | Bhavik  | May                         |
+|  105 | Shanaya | Jun                         |
+|  106 | Prisha  | Jul                         |
++------+---------+-----------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select E_Id,Name,date_format(Join_date,"%m") from student;
++------+---------+-----------------------------+
+| E_Id | Name    | date_format(Join_date,"%m") |
++------+---------+-----------------------------+
+|  101 | Akshay  | 06                          |
+|  102 | Deep    | 03                          |
+|  103 | Nisha   | 04                          |
+|  104 | Bhavik  | 05                          |
+|  105 | Shanaya | 06                          |
+|  106 | Prisha  | 07                          |
++------+---------+-----------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2023-07-11 11:08:08 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2023-07-11 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select extract(month from Leave_date),extract(year from Leave_date) from student;
++--------------------------------+-------------------------------+
+| extract(month from Leave_date) | extract(year from Leave_date) |
++--------------------------------+-------------------------------+
+|                              8 |                          2022 |
+|                              5 |                          2021 |
+|                              7 |                          2020 |
+|                              6 |                          2022 |
+|                              5 |                          2022 |
+|                              6 |                          2021 |
++--------------------------------+-------------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from student where Join_date>2010;
++------+---------+------+------------+------------+------------+--------+
+| E_Id | Name    | Age  | Address    | Join_date  | Leave_date | Salary |
++------+---------+------+------------+------------+------------+--------+
+|  101 | Akshay  |   22 | AHMEDABAD  | 2015-06-22 | 2022-08-30 |  22000 |
+|  102 | Deep    |   24 | SURAT      | 2017-03-12 | 2021-05-22 |  25000 |
+|  103 | Nisha   |   26 | Delhi      | 2015-04-22 | 2020-07-15 |  27000 |
+|  104 | Bhavik  |   20 | Ahmedabad  | 2017-05-10 | 2022-06-23 |  21000 |
+|  105 | Shanaya |   27 | Chandigarh | 2010-06-12 | 2022-05-30 |  28000 |
+|  106 | Prisha  |   29 | Ahmedabad  | 2010-07-22 | 2021-06-12 |  30000 |
++------+---------+------+------------+------------+------------+--------+
+6 rows in set, 1 warning (0.00 sec)
+
+mysql> select * from student where Join_date>2011;
++------+---------+------+------------+------------+------------+--------+
+| E_Id | Name    | Age  | Address    | Join_date  | Leave_date | Salary |
++------+---------+------+------------+------------+------------+--------+
+|  101 | Akshay  |   22 | AHMEDABAD  | 2015-06-22 | 2022-08-30 |  22000 |
+|  102 | Deep    |   24 | SURAT      | 2017-03-12 | 2021-05-22 |  25000 |
+|  103 | Nisha   |   26 | Delhi      | 2015-04-22 | 2020-07-15 |  27000 |
+|  104 | Bhavik  |   20 | Ahmedabad  | 2017-05-10 | 2022-06-23 |  21000 |
+|  105 | Shanaya |   27 | Chandigarh | 2010-06-12 | 2022-05-30 |  28000 |
+|  106 | Prisha  |   29 | Ahmedabad  | 2010-07-22 | 2021-06-12 |  30000 |
++------+---------+------+------------+------------+------------+--------+
+6 rows in set, 1 warning (0.00 sec)
+
+mysql> select * from student where Join_date>20110101;
++------+--------+------+-----------+------------+------------+--------+
+| E_Id | Name   | Age  | Address   | Join_date  | Leave_date | Salary |
++------+--------+------+-----------+------------+------------+--------+
+|  101 | Akshay |   22 | AHMEDABAD | 2015-06-22 | 2022-08-30 |  22000 |
+|  102 | Deep   |   24 | SURAT     | 2017-03-12 | 2021-05-22 |  25000 |
+|  103 | Nisha  |   26 | Delhi     | 2015-04-22 | 2020-07-15 |  27000 |
+|  104 | Bhavik |   20 | Ahmedabad | 2017-05-10 | 2022-06-23 |  21000 |
++------+--------+------+-----------+------------+------------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select *,date_format(Join_date,"%M %W %Y")from student;
++------+---------+------+------------+------------+------------+--------+-----------------------------------+
+| E_Id | Name    | Age  | Address    | Join_date  | Leave_date | Salary | date_format(Join_date,"%M %W %Y") |
++------+---------+------+------------+------------+------------+--------+-----------------------------------+
+|  101 | Akshay  |   22 | AHMEDABAD  | 2015-06-22 | 2022-08-30 |  22000 | June Monday 2015                  |
+|  102 | Deep    |   24 | SURAT      | 2017-03-12 | 2021-05-22 |  25000 | March Sunday 2017                 |
+|  103 | Nisha   |   26 | Delhi      | 2015-04-22 | 2020-07-15 |  27000 | April Wednesday 2015              |
+|  104 | Bhavik  |   20 | Ahmedabad  | 2017-05-10 | 2022-06-23 |  21000 | May Wednesday 2017                |
+|  105 | Shanaya |   27 | Chandigarh | 2010-06-12 | 2022-05-30 |  28000 | June Saturday 2010                |
+|  106 | Prisha  |   29 | Ahmedabad  | 2010-07-22 | 2021-06-12 |  30000 | July Thursday 2010                |
++------+---------+------+------------+------------+------------+--------+-----------------------------------+
+6 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
